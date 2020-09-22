@@ -5,9 +5,16 @@
   "repository": "https://github.com/pesto-students/lyricsdo.git",
   "license": "MIT",
   "scripts": {
-    "develop": "serve ."
+    "develop": "serve .",
+    "test": "jest"
   },
   "devDependencies": {
+    "eslint": "^7.9.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "husky": "^4.3.0",
+    "jest": "^26.4.2",
+    "prettier": "^2.1.2",
     "serve": "^11.3.2"
   }
 }
