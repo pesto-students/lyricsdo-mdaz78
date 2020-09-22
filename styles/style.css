@@ -1,0 +1,145 @@
+:root {
+  --primary-color: #6646ee;
+  --secondary-color: #03d8c6;
+  --logo-color: #fff;
+  --default-radius: 8px;
+  --heart: red;
+  --default-font-family: 'Roboto', sans-serif;
+}
+
+body {
+  /* font-family: --var(--default-font-family); */
+}
+
+.section__logo {
+  background-color: var(--primary-color);
+  color: var(--logo-color);
+  display: flex;
+  justify-content: space-around;
+  padding: 15px 0;
+  font-size: 2.5rem;
+}
+
+.section__logo h1 {
+  font-family: 'Dancing Script', cursive;
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+
+.section__nav {
+  margin-top: 1rem;
+  padding: 0 0.75rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.favorites {
+  width: 130px;
+}
+
+.btn {
+  color: #fff;
+  background-color: var(--primary-color);
+  border-radius: var(--default-radius);
+  padding: 6px 8px;
+  font-size: 1.1rem;
+  border: 3px solid var(--secondary-color);
+  font-weight: bold;
+}
+
+.favorites i {
+  color: var(--heart);
+  font-size: 1.1rem;
+}
+
+.theme {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 150px;
+}
+
+.theme-toggler {
+  margin: 0;
+  padding: 0;
+}
+
+.theme-switch {
+  display: inline-block;
+  height: 22px;
+  position: relative;
+  width: 37px;
+}
+
+.theme-switch input {
+  display: none;
+}
+
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.3s;
+}
+
+.slider:before {
+  background-color: #fff;
+  bottom: 2px;
+  content: '';
+  height: 18px;
+  left: 2px;
+  position: absolute;
+  transition: 0.4s;
+  width: 18px;
+}
+
+input:checked + .slider {
+  background-color: var(--secondary-color);
+}
+
+input:checked + .slider:before {
+  transform: translateX(15px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.section__search {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 0 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.section__search input {
+  padding: 12px;
+  border: 1px solid #424242;
+  border-radius: var(--default-radius);
+  font-size: 1.2rem;
+}
+
+.btn__search {
+  margin: 5px 0;
+  border: 1px solid #424242;
+  padding: 12px;
+}
+
+.separator {
+  border: 3px solid var(--secondary-color);
+  margin: 0;
+}
+
+@media (min-width: 769px) {
+  .nav__mobile {
+    display: none;
+  }
+}
