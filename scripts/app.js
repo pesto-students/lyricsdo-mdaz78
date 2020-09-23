@@ -1,4 +1,12 @@
 const root = document.querySelector('#root');
+const searchBox = document.querySelector('#search-box');
+const mobileSearchButton = document.querySelectorAll('#search-button')[0];
+const desktopSearchButton = document.querySelectorAll('#search-button')[1];
+const logo = document.querySelector('.logo');
+const themeSwitcher = document.querySelector(
+  '.theme-switch input[type="checkbox"]',
+);
+const favoritesBtn = document.querySelector('#favorites-btn');
 
 const loaderTemplate = () => {
   return `<div class="loader">
@@ -81,6 +89,25 @@ const getSuggestionsTemplate = (suggestions) => {
   `;
 };
 
+const showFavoritesPage = () => {
+  cleanRoot();
+  render(loaderTemplate());
+
+  const songs = favorites.getAll();
+  let songsTemplate;
+
+  if (songs.length === 0) {
+    songsTemplate = `<div class="container__favorites">
+      <p>You haven't added any songs to favorite yet :( </p>
+    </div>
+    `;
+  } else {
+    songsTemplate = getSuggestionsTemplate(songs);
+  }
+
+  render(songsTemplate);
+};
+
 const addEventListenerToViewLyrics = () => {
   const suggestionNodes = document.querySelectorAll('.suggestion');
   suggestionNodes.forEach((suggestionNode) => {
@@ -93,9 +120,9 @@ const addEventListenerToViewLyrics = () => {
 };
 
 const fetchData = async (searchTerm) => {
-  let url = `https://api.lyrics.ovh/suggest/${searchTerm}`;
+  const url = `https://api.lyrics.ovh/suggest/${searchTerm}`;
   const response = await fetch(url);
-  return await response.json();
+  return response.json();
 };
 
 const search = async () => {
@@ -106,20 +133,12 @@ const search = async () => {
 
   render(loaderTemplate());
   const response = await fetchData(searchTerm);
-  const { data: suggestions, next } = response;
+  const { data: suggestions } = response;
   const suggestionsTemplate = getSuggestionsTemplate(suggestions);
   cleanRoot();
   render(suggestionsTemplate);
   addEventListenerToViewLyrics();
 };
-
-const searchBox = document.querySelector('#search-box');
-const mobileSearchButton = document.querySelectorAll('#search-button')[0];
-const desktopSearchButton = document.querySelectorAll('#search-button')[1];
-const logo = document.querySelector('.logo');
-const themeSwitcher = document.querySelector(
-  '.theme-switch input[type="checkbox"]'
-);
 
 logo.addEventListener('click', () => {
   cleanRoot();
@@ -131,10 +150,8 @@ desktopSearchButton.addEventListener('click', search);
 mobileSearchButton.addEventListener('click', search);
 
 searchBox.addEventListener('keyup', (event) => {
-  // If enter key is not pressed return
-  if (event.keyCode !== 13) {
-    return;
-  } else {
+  // Search if enter key is pressed
+  if (event.keyCode === 13) {
     search();
   }
 });
@@ -146,3 +163,5 @@ themeSwitcher.addEventListener('change', (event) => {
     document.documentElement.setAttribute('data-theme', 'light');
   }
 });
+
+favoritesBtn.addEventListener('click', showFavoritesPage);
