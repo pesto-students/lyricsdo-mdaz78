@@ -66,6 +66,10 @@
   justify-content: space-between;
 }
 
+.section__nav > * {
+  margin: 2px;
+}
+
 .favorites {
   width: 130px;
 }
@@ -354,7 +358,6 @@ input:checked + .slider:before {
     margin: 11px 0px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 10px;
     padding: 3px 3px;
     background-color: var(--secondary-color);
     border-radius: var(--default-radius);
