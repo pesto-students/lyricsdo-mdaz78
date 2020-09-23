@@ -6,6 +6,29 @@
   --default-radius: 8px;
   --heart: red;
   --default-font-family: 'Roboto', sans-serif;
+  --font-color: #424242;
+  --bg-color: #fff;
+  --border-color: #6646ee;
+  --button-text-color: #fff;
+}
+
+[data-theme='dark'] {
+  --primary-color: #6646ee;
+  --secondary-color: #03d8c6;
+  --secondary-color-variant: #018786;
+  --logo-color: #fff;
+  --default-radius: 8px;
+  --heart: red;
+  --default-font-family: 'Roboto', sans-serif;
+  --font-color: #e1e1ff;
+  --bg-color: #161625;
+  --border-color: #03d8c6;
+  --button-text-color: #fff;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--font-color);
 }
 
 .loader {
@@ -194,7 +217,7 @@ input:checked + .slider:before {
 }
 
 .suggestion {
-  border: 2px solid var(--primary-color);
+  border: 2px solid var(--border-color);
   border-radius: var(--default-radius);
 }
 
@@ -208,7 +231,7 @@ input:checked + .slider:before {
 .suggestion .cover,
 .suggestion .description,
 .suggestion .preview {
-  border-bottom: 2px solid var(--primary-color);
+  border-bottom: 2px solid var(--border-color);
 }
 
 .suggestion .description {
@@ -245,8 +268,8 @@ input:checked + .slider:before {
 }
 
 .suggestion .view-and-like-lyrics button {
-  color: #fff;
-  background-color: var(--primary-color);
+  color: var(--button-text-color);
+  background-color: var(--border-color);
   padding: 10px;
   border: none;
   font-size: 1.1rem;
