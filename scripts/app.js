@@ -13,8 +13,14 @@ const render = (template) => {
   root.innerHTML = template;
 };
 
+const viewLyrics = (artist, title) => {
+  console.log(artist);
+  console.log(title);
+};
+
 const getSuggestionsTemplate = (suggestions) => {
-  const suggestionsTemplate = suggestions.map(({ preview, artist, album }) => {
+  const suggestionsTemplate = suggestions.map((suggestion) => {
+    const { preview, artist, album } = suggestion;
     return `
       <div class="suggestion">
       <div class="cover">
@@ -34,7 +40,7 @@ const getSuggestionsTemplate = (suggestions) => {
         ></audio>
       </div>
       <div class="view-and-like-lyrics">
-        <button>View Lyrics</button>
+        <button class="view-lyrics">View Lyrics</button>
         <div class="like">
           <i class="far fa-heart"></i>
         </div>
@@ -47,6 +53,17 @@ const getSuggestionsTemplate = (suggestions) => {
       ${suggestionsTemplate.join('')}
     </div>
   `;
+};
+
+const addEventListenerToViewLyrics = () => {
+  const suggestionNodes = document.querySelectorAll('.suggestion');
+  suggestionNodes.forEach((suggestionNode) => {
+    const artist = suggestionNode.querySelector('.description h3').innerText;
+    const title = suggestionNode.querySelector('.description p').innerText;
+    const viewButton = suggestionNode.querySelector('.view-lyrics');
+
+    viewButton.addEventListener('click', () => viewLyrics(artist, title));
+  });
 };
 
 const fetchData = async (searchTerm) => {
@@ -67,6 +84,7 @@ const search = async () => {
   const suggestionsTemplate = getSuggestionsTemplate(suggestions);
   cleanRoot();
   render(suggestionsTemplate);
+  addEventListenerToViewLyrics();
 };
 
 const searchBox = document.querySelector('#search-box');
