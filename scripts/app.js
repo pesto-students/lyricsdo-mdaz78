@@ -17,11 +17,15 @@ const render = (template) => {
 const renderLyrics = ({ lyrics, artist, title }) => {
   cleanRoot();
   const template = `
-    <div class="lyrics-container">
+    <section class="section__lyrics">
+      <div></div>
+      <div class="lyrics-container">
       <h2 class="lyrics-title">${title}</h2>
       <p class="lyrics-artist">${artist}</p>
       <p class="lyrics">${lyrics || 'Lyrics is not available'}</p>
-    </div>
+      </div>
+      <div></div>
+    </section>
   `;
 
   render(template);
