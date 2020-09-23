@@ -7,10 +7,58 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/reset.css" />
     <link rel="stylesheet" href="styles/style.css" />
     <title>Lyrics It</title>
   </head>
   <body>
+    <div class="nav__mobile">
+      <section class="section__logo">
+        <i class="fas fa-music"></i>
+        <h1>Lyrics It</h1>
+        <i class="fas fa-music"></i>
+      </section>
+      <hr class="separator" />
+
+      <section class="section__nav">
+        <button class="favorites btn">
+          <i class="fas fa-heart"></i>
+          <span>Favorites</span>
+        </button>
+        <div class="theme btn">
+          <div class="theme-toggler">
+            <label class="theme-switch" for="checkbox">
+              <input type="checkbox" id="checkbox" />
+              <div class="slider round"></div>
+            </label>
+          </div>
+          <section class="theme-name">Dark Theme</section>
+        </div>
+      </section>
+
+      <div class="section__search">
+        <input
+          type="text"
+          id="search"
+          class="search"
+          placeholder="Search for a song or an artist"
+        />
+        <button class="btn btn__search btn__search--mobile">Search</button>
+        <button class="btn btn__search btn__search--desktop">
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+    <hr class="separator__desktop" />
+
     <script src="scripts/app.js"></script>
   </body>
 </html>
