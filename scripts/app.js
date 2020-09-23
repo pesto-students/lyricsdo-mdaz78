@@ -117,6 +117,9 @@ const searchBox = document.querySelector('#search-box');
 const mobileSearchButton = document.querySelectorAll('#search-button')[0];
 const desktopSearchButton = document.querySelectorAll('#search-button')[1];
 const logo = document.querySelector('.logo');
+const themeSwitcher = document.querySelector(
+  '.theme-switch input[type="checkbox"]'
+);
 
 logo.addEventListener('click', () => {
   cleanRoot();
@@ -124,12 +127,22 @@ logo.addEventListener('click', () => {
 });
 
 desktopSearchButton.addEventListener('click', search);
+
 mobileSearchButton.addEventListener('click', search);
+
 searchBox.addEventListener('keyup', (event) => {
   // If enter key is not pressed return
   if (event.keyCode !== 13) {
     return;
   } else {
     search();
+  }
+});
+
+themeSwitcher.addEventListener('change', (event) => {
+  if (event.target.checked) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
   }
 });
