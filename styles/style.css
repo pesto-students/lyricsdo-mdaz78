@@ -271,9 +271,6 @@ input:checked + .slider:before {
 }
 
 /* Lyrics Section */
-.lyrics-container {
-  padding: 3rem 15rem;
-}
 
 .lyrics-container .lyrics-title,
 .lyrics-container .lyrics-artist {
@@ -288,11 +285,11 @@ input:checked + .slider:before {
 .lyrics-container .lyrics-artist {
   font-weight: bold;
   padding-top: 0.5rem;
+  padding-bottom: 1.5rem;
   letter-spacing: 1.5px;
 }
 
 .lyrics-container .lyrics {
-  padding: 2.5rem 10rem;
   line-height: 2;
   font-size: 1.15rem;
   text-align: justify;
@@ -375,5 +372,11 @@ input:checked + .slider:before {
 
   .favorites {
     margin: 0;
+  }
+
+  .section__lyrics {
+    padding-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
   }
 }
