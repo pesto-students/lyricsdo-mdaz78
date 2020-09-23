@@ -278,7 +278,7 @@ input:checked + .slider:before {
 }
 
 .lyrics-container .lyrics {
-  padding-top: 2.5rem;
+  padding: 2.5rem 10rem;
   line-height: 2;
   font-size: 1.15rem;
   text-align: justify;
