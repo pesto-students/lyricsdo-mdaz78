@@ -284,7 +284,7 @@ input:checked + .slider:before {
   text-align: justify;
 }
 
-@media (min-width: 769px) {
+@media (min-width: 992px) {
   .nav {
     background-color: var(--primary-color);
     display: grid;
