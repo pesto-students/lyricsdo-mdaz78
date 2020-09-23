@@ -185,7 +185,7 @@ input:checked + .slider:before {
 
 .song-suggestions {
   display: grid;
-  grid-template-columns: repeat(5, 253px);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 30px;
 }
 
@@ -197,6 +197,7 @@ input:checked + .slider:before {
 .suggestion .cover img {
   border-top-left-radius: var(--default-radius);
   border-top-right-radius: var(--default-radius);
+  width: 100%;
   object-fit: cover;
 }
 
@@ -207,8 +208,14 @@ input:checked + .slider:before {
 }
 
 .suggestion .description {
+  min-height: 70px;
+  max-height: 70px;
   text-align: center;
-  padding: 10px;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  padding: 2px 2px;
 }
 
 .suggestion .description h3 {
@@ -222,7 +229,10 @@ input:checked + .slider:before {
 }
 
 .suggestion .preview {
-  padding: 5px 2px;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .suggestion .view-and-like-lyrics {
