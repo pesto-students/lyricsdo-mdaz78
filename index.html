@@ -20,10 +20,10 @@
     <title>Lyrics It</title>
   </head>
   <body>
-    <div class="nav__mobile">
+    <div class="nav">
       <section class="section__logo">
         <i class="fas fa-music"></i>
-        <h1>Lyrics It</h1>
+        <h1 class="logo">Lyrics It</h1>
         <i class="fas fa-music"></i>
       </section>
       <hr class="separator" />
@@ -47,17 +47,22 @@
       <div class="section__search">
         <input
           type="text"
-          id="search"
+          id="search-box"
           class="search"
           placeholder="Search for a song or an artist"
         />
-        <button class="btn btn__search btn__search--mobile">Search</button>
-        <button class="btn btn__search btn__search--desktop">
+        <button class="btn btn__search btn__search--mobile" id="search-button">
+          Search
+        </button>
+        <button class="btn btn__search btn__search--desktop" id="search-button">
           <i class="fas fa-arrow-right"></i>
         </button>
       </div>
     </div>
+
     <hr class="separator__desktop" />
+
+    <div id="root"></div>
 
     <script src="scripts/app.js"></script>
   </body>

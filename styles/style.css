@@ -8,6 +8,38 @@
   --default-font-family: 'Roboto', sans-serif;
 }
 
+.loader {
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+}
+
+.ids-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.ids-dual-ring:after {
+  content: ' ';
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: var(--primary-color) transparent var(--primary-color)
+    transparent;
+  animation: ids-dual-ring 1.2s linear infinite;
+}
+@keyframes ids-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .section__logo {
   background-color: var(--primary-color);
   color: var(--logo-color);
@@ -15,6 +47,10 @@
   justify-content: space-around;
   padding: 15px 0;
   font-size: 2.5rem;
+}
+
+.logo {
+  cursor: pointer;
 }
 
 .section__logo h1 {
@@ -143,8 +179,113 @@ input:checked + .slider:before {
   margin: 0;
 }
 
+#root {
+  padding: 20px;
+}
+
+.song-suggestions {
+  display: grid;
+  grid-template-columns: repeat(5, 253px);
+  grid-gap: 30px;
+}
+
+.suggestion {
+  border: 2px solid var(--primary-color);
+  border-radius: var(--default-radius);
+}
+
+.suggestion .cover img {
+  border-top-left-radius: var(--default-radius);
+  border-top-right-radius: var(--default-radius);
+  object-fit: cover;
+}
+
+.suggestion .cover,
+.suggestion .description,
+.suggestion .preview {
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.suggestion .description {
+  text-align: center;
+  padding: 10px;
+}
+
+.suggestion .description h3 {
+  font-size: 1.12rem;
+  font-weight: bold;
+}
+
+.suggestion .description p {
+  margin-top: 6px;
+  font-size: 1.1rem;
+}
+
+.suggestion .preview {
+  padding: 5px 2px;
+}
+
+.suggestion .view-and-like-lyrics {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+}
+
+.suggestion .view-and-like-lyrics button {
+  color: #fff;
+  background-color: var(--primary-color);
+  padding: 10px;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-bottom-left-radius: 6px;
+}
+
+.suggestion .view-and-like-lyrics .like {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  color: var(--heart);
+  border-bottom-right-radius: 6px;
+  background-color: #e5e5e5;
+}
+
+.suggestion .view-and-like-lyrics .like i {
+  color: var(--heart);
+  border-color: var(--heart);
+  cursor: pointer;
+}
+
+/* Lyrics Section */
+.lyrics-container {
+  padding: 3rem 15rem;
+}
+
+.lyrics-container .lyrics-title,
+.lyrics-container .lyrics-artist {
+  text-align: center;
+}
+
+.lyrics-container .lyrics-title {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.lyrics-container .lyrics-artist {
+  font-weight: bold;
+  padding-top: 0.5rem;
+  letter-spacing: 1.5px;
+}
+
+.lyrics-container .lyrics {
+  padding: 2.5rem 10rem;
+  line-height: 2;
+  font-size: 1.15rem;
+  text-align: justify;
+}
+
 @media (min-width: 769px) {
-  .nav__mobile {
+  .nav {
     background-color: var(--primary-color);
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
