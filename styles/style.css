@@ -49,6 +49,10 @@
   font-size: 2.5rem;
 }
 
+.logo {
+  cursor: pointer;
+}
+
 .section__logo h1 {
   font-family: 'Dancing Script', cursive;
   font-weight: bold;
@@ -252,8 +256,36 @@ input:checked + .slider:before {
   cursor: pointer;
 }
 
+/* Lyrics Section */
+.lyrics-container {
+  padding: 3rem 15rem;
+}
+
+.lyrics-container .lyrics-title,
+.lyrics-container .lyrics-artist {
+  text-align: center;
+}
+
+.lyrics-container .lyrics-title {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.lyrics-container .lyrics-artist {
+  font-weight: bold;
+  padding-top: 0.5rem;
+  letter-spacing: 1.5px;
+}
+
+.lyrics-container .lyrics {
+  padding-top: 2.5rem;
+  line-height: 2;
+  font-size: 1.15rem;
+  text-align: justify;
+}
+
 @media (min-width: 769px) {
-  .nav__mobile {
+  .nav {
     background-color: var(--primary-color);
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;

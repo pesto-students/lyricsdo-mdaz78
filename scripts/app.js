@@ -1,4 +1,5 @@
 const root = document.querySelector('#root');
+
 const loaderTemplate = () => {
   return `<div class="loader">
     <div class="ids-dual-ring">
@@ -13,9 +14,30 @@ const render = (template) => {
   root.innerHTML = template;
 };
 
-const viewLyrics = (artist, title) => {
-  console.log(artist);
-  console.log(title);
+const renderLyrics = ({ lyrics, artist, title }) => {
+  cleanRoot();
+  const template = `
+    <div class="lyrics-container">
+      <h2 class="lyrics-title">${title}</h2>
+      <p class="lyrics-artist">${artist}</p>
+      <p class="lyrics">${lyrics || 'Lyrics is not available'}</p>
+    </div>
+  `;
+
+  render(template);
+};
+
+const fetchLyrics = async (artist, title) => {
+  const url = `https://api.lyrics.ovh/v1/${artist}/${title}`;
+  const response = await fetch(url);
+  return await response.json();
+};
+
+const viewLyrics = async (artist, title) => {
+  cleanRoot();
+  render(loaderTemplate());
+  const { lyrics } = await fetchLyrics(artist, title);
+  renderLyrics({ lyrics, artist, title });
 };
 
 const getSuggestionsTemplate = (suggestions) => {
@@ -67,7 +89,7 @@ const addEventListenerToViewLyrics = () => {
 };
 
 const fetchData = async (searchTerm) => {
-  const url = `https://api.lyrics.ovh/suggest/${searchTerm}`;
+  let url = `https://api.lyrics.ovh/suggest/${searchTerm}`;
   const response = await fetch(url);
   return await response.json();
 };
@@ -90,6 +112,12 @@ const search = async () => {
 const searchBox = document.querySelector('#search-box');
 const mobileSearchButton = document.querySelectorAll('#search-button')[0];
 const desktopSearchButton = document.querySelectorAll('#search-button')[1];
+const logo = document.querySelector('.logo');
+
+logo.addEventListener('click', () => {
+  cleanRoot();
+  searchBox.value = '';
+});
 
 desktopSearchButton.addEventListener('click', search);
 mobileSearchButton.addEventListener('click', search);
