@@ -8,6 +8,8 @@ const themeSwitcher = document.querySelector(
 );
 const favoritesBtn = document.querySelector('#favorites-btn');
 
+let currentPage = 'HOME';
+
 const fetchLyrics = async (artist, title) => {
   const url = `https://api.lyrics.ovh/v1/${artist}/${title}`;
   const response = await fetch(url);
@@ -51,10 +53,19 @@ const favoritesObj = {
       this.add({ id, artistName, albumName, preview, cover });
       favoriteButton.classList.remove('far');
       favoriteButton.classList.add('fas');
+      if (currentPage === 'FAVORITES') {
+        dom.showLoader();
+        dom.renderFavoritesPages();
+      }
     } else {
       this.remove(id);
       favoriteButton.classList.remove('fas');
       favoriteButton.classList.add('far');
+
+      if (currentPage === 'FAVORITES') {
+        dom.showLoader();
+        dom.renderFavoritesPages();
+      }
     }
   },
 };
@@ -132,7 +143,6 @@ const dom = {
   },
 
   render(template) {
-    console.log('render', template);
     this.cleanRoot();
     root.innerHTML = template;
   },
@@ -205,6 +215,7 @@ const dom = {
     } else {
       songsTemplate = this.renderTemplateFrom(songs);
     }
+    currentPage = 'FAVORITES';
   },
 };
 
@@ -225,6 +236,7 @@ const search = async () => {
     return;
   }
 
+  currentPage = 'HOME';
   dom.showLoader();
   const response = await fetchData(searchTerm);
   const { data: suggestions } = response;
@@ -243,6 +255,7 @@ const search = async () => {
 
 logo.addEventListener('click', () => {
   dom.cleanRoot();
+  currentPage = 'HOME';
   searchBox.value = '';
 });
 desktopSearchButton.addEventListener('click', search);
