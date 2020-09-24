@@ -8,5 +8,7 @@
   "parserOptions": {
     "ecmaVersion": 2020
   },
-  "rules": {}
+  "rules": {
+    "space-in-parens": "warn"
+  }
 }
