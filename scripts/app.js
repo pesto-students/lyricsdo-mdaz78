@@ -247,7 +247,7 @@ const search = async () => {
       preview,
       artistName: artist.name,
       albumName: album.title,
-      cover: album.cover_medium,
+      cover: album.cover,
     };
   });
   dom.renderTemplateFrom(configArray);
